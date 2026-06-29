@@ -1,5 +1,4 @@
-const puppeteer = require('puppeteer-core');
-const chromium = require('@sparticuz/chromium');
+const htmlPdf = require('html-pdf-node');
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -24,7 +23,6 @@ exports.handler = async (event) => {
   } catch (e) {
     return { statusCode: 400, body: 'JSON inválido' };
   }
-
   const html = gerarHTMLCertificado(dados);
 
   const browser = await puppeteer.launch({
