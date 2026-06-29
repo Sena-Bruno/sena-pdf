@@ -27,24 +27,24 @@ exports.handler = async (event) => {
 
   const html = gerarHTMLCertificado(dados);
 
-  chromium.setHeadlessMode = true;
-  chromium.setGraphicsMode = false;
-
   const browser = await puppeteer.launch({
-  args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox'],
-  defaultViewport: { width: 1123, height: 794 },
-  executablePath: await chromium.executablePath(),
-  headless: 'new'
-});
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(
+      'https://github.com/Sparticuz/chromium/releases/download/v110.0.0/chromium-v110.0.0-pack.tar'
+    ),
+    headless: chromium.headless
+  });
 
- const browser = await puppeteer.launch({
-  args: chromium.args,
-  defaultViewport: chromium.defaultViewport,
-  executablePath: await chromium.executablePath(
-    'https://github.com/Sparticuz/chromium/releases/download/v110.0.0/chromium-v110.0.0-pack.tar'
-  ),
-  headless: chromium.headless
-});
+  const page = await browser.newPage();
+  await page.setContent(html, { waitUntil: 'networkidle0' });
+
+  const pdf = await page.pdf({
+    width: '297mm',
+    height: '210mm',
+    printBackground: true,
+    margin: { top: 0, right: 0, bottom: 0, left: 0 }
+  });
 
   await browser.close();
 
