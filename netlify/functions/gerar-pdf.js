@@ -23,28 +23,17 @@ exports.handler = async (event) => {
   } catch (e) {
     return { statusCode: 400, body: 'JSON inválido' };
   }
+
   const html = gerarHTMLCertificado(dados);
 
-  const browser = await puppeteer.launch({
-    args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      'https://github.com/Sparticuz/chromium/releases/download/v110.0.0/chromium-v110.0.0-pack.tar'
-    ),
-    headless: chromium.headless
-  });
-
-  const page = await browser.newPage();
-  await page.setContent(html, { waitUntil: 'networkidle0' });
-
-  const pdf = await page.pdf({
-    width: '297mm',
-    height: '210mm',
+  const options = {
+    format: 'A4',
+    landscape: true,
     printBackground: true,
-    margin: { top: 0, right: 0, bottom: 0, left: 0 }
-  });
+    margin: { top: '0', right: '0', bottom: '0', left: '0' }
+  };
 
-  await browser.close();
+  const pdfBuffer = await htmlPdf.generatePdf({ content: html }, options);
 
   return {
     statusCode: 200,
@@ -53,7 +42,7 @@ exports.handler = async (event) => {
       'Access-Control-Allow-Origin': '*'
     },
     isBase64Encoded: true,
-    body: pdf.toString('base64')
+    body: pdfBuffer.toString('base64')
   };
 };
 
