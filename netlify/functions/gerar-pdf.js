@@ -31,13 +31,11 @@ exports.handler = async (event) => {
   chromium.setGraphicsMode = false;
 
   const browser = await puppeteer.launch({
-    args: chromium.args,
-    defaultViewport: { width: 1123, height: 794 },
-    executablePath: await chromium.executablePath(
-      '/var/task/node_modules/@sparticuz/chromium/bin'
-    ),
-    headless: chromium.headless
-  });
+  args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox'],
+  defaultViewport: { width: 1123, height: 794 },
+  executablePath: await chromium.executablePath(),
+  headless: 'new'
+});
 
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: 'networkidle0' });
