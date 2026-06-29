@@ -2,7 +2,7 @@
   "name": "sena-pdf",
   "version": "1.0.0",
   "dependencies": {
-    "@sparticuz/chromium": "^112.0.0",
-    "puppeteer-core": "^19.11.1"
+    "@sparticuz/chromium": "^110.0.0",
+    "puppeteer-core": "^18.2.1"
   }
 }
