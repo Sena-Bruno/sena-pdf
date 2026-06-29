@@ -5,9 +5,13 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+  included_files = ["node_modules/@sparticuz/chromium/**"]
+
+[functions."gerar-pdf"]
+  timeout = 30
 
 [[headers]]
-  for = "/api/*"
+  for = "/.netlify/functions/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "POST, OPTIONS"
