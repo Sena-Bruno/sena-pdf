@@ -1,4 +1,3 @@
-
 const puppeteer = require('puppeteer-core');
 const chromium = require('@sparticuz/chromium');
 
@@ -28,10 +27,15 @@ exports.handler = async (event) => {
 
   const html = gerarHTMLCertificado(dados);
 
+  chromium.setHeadlessMode = true;
+  chromium.setGraphicsMode = false;
+
   const browser = await puppeteer.launch({
     args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(),
+    defaultViewport: { width: 1123, height: 794 },
+    executablePath: await chromium.executablePath(
+      '/var/task/node_modules/@sparticuz/chromium/bin'
+    ),
     headless: chromium.headless
   });
 
