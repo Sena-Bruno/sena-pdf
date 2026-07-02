@@ -109,11 +109,9 @@ function htmlTemaMaster(d) {
     <div class="content">
       <p class="eyebrow">Atestado de Excelência</p>
       <h1 class="title">Certificado</h1>
-      <p class="text">Temos o orgulho de certificar que</p>
       <div class="name">${d.nome_aluno}</div>
-      <p class="text">concluiu todos os requisitos para a certificação de</p>
-      <div class="course">${d.curso}</div>
-      <p class="desc">Obtendo média <span class="bold">${d.media}</span> com <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas aprovadas no simulador clínico SENA. Este documento atesta a excelência e o total domínio das práticas e ferramentas da Programação Neurolinguística.</p>
+      <div class="course">Master em Programação Neurolinguística</div>
+      <p class="desc">Este certificado celebra a trajetória de <span class="bold">${d.nome_aluno}</span> na formação de Master em PNL, concluída com domínio integral de <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas no Simulador Clínico SENA — reconhecimento máximo de excelência técnica e maturidade profissional.</p>
       <div class="divider"></div>
       <div class="footer">
         <div class="sig-line"><p class="sig-name">Bruno Sena</p><p class="sig-role">Diretor e Instrutor</p></div>
@@ -141,11 +139,9 @@ function htmlTemaPractitioner(d) {
     <div class="body">
       <p class="eyebrow">Atestado de Qualificação</p>
       <h1 class="title">Certificado</h1>
-      <p class="text">Temos o orgulho de certificar que</p>
       <div class="name">${d.nome_aluno}</div>
-      <p class="text">concluiu todos os requisitos para a certificação de</p>
-      <div class="course">${d.curso}</div>
-      <p class="desc">Obtendo média <span class="bold">${d.media}</span> com <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas aprovadas no simulador clínico SENA. Este documento atesta a dedicação e o domínio das competências e ferramentas da Programação Neurolinguística.</p>
+      <div class="course">Practitioner em Programação Neurolinguística</div>
+      <p class="desc">Este certificado reconhece o percurso de <span class="bold">${d.nome_aluno}</span> na formação de Practitioner em PNL, concluída com média <span class="bold">${d.media}</span> e conclusão integral de <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas no Simulador Clínico SENA — marco inicial de uma nova forma de compreender e transformar comportamentos.</p>
       <div class="footer">
         <div class="sig-line"><p class="sig-name">Bruno Sena</p><p class="sig-role">Diretor e Instrutor</p></div>
         <div class="meta"><p class="meta-date">${d.data}</p><p class="meta-cod">Cod: ${d.codigo}</p></div>
@@ -167,7 +163,6 @@ function htmlTemaHipno(d) {
     .diag-right { position: absolute; top: 0; left: 29%; right: 0; height: 100%; z-index: 2; display: flex; flex-direction: column; justify-content: center; padding: 40px 50px 40px 40px; box-sizing: border-box; }
     .eyebrow { font-size: 9px; font-weight: 500; letter-spacing: 5px; text-transform: uppercase; color: #8BAF8A; margin: 0 0 14px; }
     .title { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 44px; color: #2D3B36; margin: 0 0 20px; }
-    .text { font-size: 13px; font-weight: 300; color: #666; margin: 0 0 3px; }
     .name { font-family: 'Playfair Display', serif; font-style: italic; font-size: 36px; color: #2D3B36; margin: 6px 0; }
     .course { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #2D3B36; margin: 0 0 16px; }
     .desc { font-size: 12px; color: #777; font-weight: 300; line-height: 1.7; }
@@ -192,11 +187,9 @@ function htmlTemaHipno(d) {
   <div class="diag-right">
     <p class="eyebrow">Atestado de Qualificação</p>
     <h1 class="title">Certificado</h1>
-    <p class="text">Reconhecemos publicamente que</p>
     <div class="name">${d.nome_aluno}</div>
-    <p class="text">obteve a graduação de</p>
-    <div class="course">${d.curso}</div>
-    <p class="desc">Obtendo média <span class="bold">${d.media}</span> com <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas aprovadas no simulador clínico SENA. Aprovado(a) com excelência em todas as avaliações teóricas e práticas.</p>
+    <div class="course">Hipnoterapeuta Clínico</div>
+    <p class="desc">Este certificado reconhece o caminho de <span class="bold">${d.nome_aluno}</span> na formação de Hipnoterapeuta Clínico, concluída com domínio completo de <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas no Simulador Clínico SENA — atestando sensibilidade técnica e segurança nas práticas de indução e intervenção terapêutica.</p>
     <div class="divider"></div>
     <div class="footer">
       <div class="sig-line"><p class="sig-name">Bruno Sena</p><p class="sig-role">Diretor Executivo</p></div>
@@ -225,11 +218,9 @@ function htmlTemaCoach(d) {
     <div class="content">
       <p class="eyebrow">Atestado de Qualificação</p>
       <h1 class="title">Certificado</h1>
-      <p class="text">Reconhecemos publicamente que</p>
       <div class="name">${d.nome_aluno}</div>
-      <p class="text">obteve a graduação de</p>
-      <div class="course">${d.curso}</div>
-      <p class="desc">Obtendo média <span class="bold">${d.media}</span> com <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas aprovadas no simulador clínico SENA. Aprovado(a) com excelência em todas as avaliações teóricas e práticas.</p>
+      <div class="course">Coach Profissional</div>
+      <p class="desc">Este certificado reconhece a formação de <span class="bold">${d.nome_aluno}</span> como Coach Profissional, concluída com domínio completo de <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas no Simulador Clínico SENA — evidenciando maestria prática das ferramentas que transformam potencial em resultado.</p>
       <div class="divider"></div>
       <div class="footer">
         <div class="sig-line"><p class="sig-name">Bruno Sena</p><p class="sig-role">Diretor Executivo</p></div>
