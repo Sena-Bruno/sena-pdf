@@ -40,8 +40,8 @@ const ASSINATURA_URL = 'https://sena-pdf.netlify.app/public/assinatura_brunosena
 
 function assinatura(cor) {
   return `
-    <img src="${ASSINATURA_URL}" style="height:48px;display:block;margin-bottom:2px;opacity:0.85;" />
-    <div style="width:100%;height:1px;background:${cor || '#ccc'};opacity:0.3;margin-bottom:5px;"></div>
+    <img src="${ASSINATURA_URL}" style="height:32px;display:block;margin-bottom:2px;opacity:0.85;" />
+    <div style="width:100%;height:1px;background:${cor || '#ccc'};opacity:0.3;margin-bottom:4px;"></div>
     <p class="sig-name" style="color:${cor || '#222'};">Bruno Sena</p>
     <p class="sig-role">Diretor e Instrutor</p>
   `;
