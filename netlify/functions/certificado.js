@@ -40,10 +40,15 @@ const ASSINATURA_URL = 'https://sena-pdf.netlify.app/public/assinatura_brunosena
 
 function assinatura(cor) {
   return `
-    <img src="${ASSINATURA_URL}" style="height:48px;display:block;margin-bottom:4px;opacity:0.85;" />
+    <img src="${ASSINATURA_URL}" style="height:48px;display:block;margin-bottom:2px;opacity:0.85;" />
+    <div style="width:100%;height:1px;background:${cor || '#ccc'};opacity:0.3;margin-bottom:5px;"></div>
     <p class="sig-name" style="color:${cor || '#222'};">Bruno Sena</p>
     <p class="sig-role">Diretor e Instrutor</p>
   `;
+}
+
+function btnImprimir() {
+  return '<button class="print-btn" onclick="window.print()">⬇️ Salvar PDF</button>';
 }
 
 function cssBase() {
@@ -65,9 +70,8 @@ function cssBase() {
     .c-side .course { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 18px; }
     .c-side .desc { font-size: 13px; color: #666; font-weight: 300; line-height: 1.6; max-width: 88%; }
     .c-side .desc .bold { font-weight: 600; color: #444; }
-    .c-side .divider { height: 1px; background: #e8e8e8; margin: 20px 0; width: 90%; }
-    .c-side .footer { display: flex; justify-content: space-between; align-items: flex-end; width: 90%; }
-    .c-side .sig-line { width: 35%; border-top: 1px solid #ccc; padding-top: 8px; }
+    .c-side .footer { display: flex; justify-content: space-between; align-items: flex-end; width: 90%; margin-top: 24px; }
+    .c-side .sig-line { width: 35%; padding-top: 8px; }
     .c-side .sig-name { margin: 0; font-size: 13px; font-weight: 600; color: #222; }
     .c-side .sig-role { margin: 0; font-size: 11px; color: #999; }
     .c-side .meta { text-align: right; }
@@ -84,18 +88,14 @@ function cssBase() {
     .c-topband .course { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 14px; }
     .c-topband .desc { font-size: 12px; color: #777; font-weight: 300; line-height: 1.6; max-width: 75%; }
     .c-topband .desc .bold { font-weight: 600; color: #555; }
-    .c-topband .footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 18px; width: 100%; }
-    .c-topband .sig-line { border-top: 1px solid #ddd; padding-top: 6px; width: 32%; }
+    .c-topband .footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 22px; width: 100%; }
+    .c-topband .sig-line { padding-top: 6px; width: 32%; }
     .c-topband .sig-name { margin: 0; font-size: 12px; font-weight: 600; color: #222; }
     .c-topband .sig-role { margin: 0; font-size: 10px; color: #aaa; }
     .c-topband .meta { text-align: right; }
     .c-topband .meta-date { margin: 0; font-size: 10px; color: #bbb; }
     .c-topband .meta-cod { font-family: monospace; font-size: 9px; margin-top: 3px; }
   `;
-}
-
-function btnImprimir() {
-  return '<button class="print-btn" onclick="window.print()">⬇️ Salvar PDF</button>';
 }
 
 function htmlTemaMaster(d) {
@@ -120,7 +120,6 @@ function htmlTemaMaster(d) {
       <div class="name">${d.nome_aluno}</div>
       <div class="course">Master em Programação Neurolinguística</div>
       <p class="desc">Este certificado celebra a trajetória de <span class="bold">${d.nome_aluno}</span> na formação de Master em PNL, concluída com domínio integral de <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas no Simulador Clínico SENA — reconhecimento máximo de excelência técnica e maturidade profissional.</p>
-      <div class="divider"></div>
       <div class="footer">
         <div class="sig-line">${assinatura('#1C2B3A')}</div>
         <div class="meta"><p class="meta-date">${d.data}</p><p class="meta-cod">Cod: ${d.codigo}</p></div>
@@ -175,9 +174,8 @@ function htmlTemaHipno(d) {
     .course { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #2D3B36; margin: 0 0 16px; }
     .desc { font-size: 12px; color: #777; font-weight: 300; line-height: 1.7; }
     .desc .bold { font-weight: 600; color: #555; }
-    .divider { height: 1px; background: #ddd; margin: 18px 0; width: 95%; }
-    .footer { display: flex; justify-content: space-between; align-items: flex-end; width: 95%; }
-    .sig-line { border-top: 1px solid #ccc; padding-top: 6px; width: 38%; }
+    .footer { display: flex; justify-content: space-between; align-items: flex-end; width: 95%; margin-top: 22px; }
+    .sig-line { padding-top: 6px; width: 38%; }
     .sig-name { margin: 0; font-size: 12px; font-weight: 600; color: #2D3B36; }
     .sig-role { margin: 0; font-size: 10px; color: #aaa; }
     .meta { text-align: right; }
@@ -198,7 +196,6 @@ function htmlTemaHipno(d) {
     <div class="name">${d.nome_aluno}</div>
     <div class="course">Hipnoterapeuta Clínico</div>
     <p class="desc">Este certificado reconhece o caminho de <span class="bold">${d.nome_aluno}</span> na formação de Hipnoterapeuta Clínico, concluída com domínio completo de <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas no Simulador Clínico SENA — atestando sensibilidade técnica e segurança nas práticas de indução e intervenção terapêutica.</p>
-    <div class="divider"></div>
     <div class="footer">
       <div class="sig-line">${assinatura('#2D3B36')}</div>
       <div class="meta"><p class="meta-date">${d.data}</p><p class="meta-cod">ID: ${d.codigo}</p></div>
@@ -229,7 +226,6 @@ function htmlTemaCoach(d) {
       <div class="name">${d.nome_aluno}</div>
       <div class="course">Coach Profissional</div>
       <p class="desc">Este certificado reconhece a formação de <span class="bold">${d.nome_aluno}</span> como Coach Profissional, concluída com domínio completo de <span class="bold">${d.aulas_aprovadas}/${d.total_aulas}</span> aulas no Simulador Clínico SENA — evidenciando maestria prática das ferramentas que transformam potencial em resultado.</p>
-      <div class="divider"></div>
       <div class="footer">
         <div class="sig-line">${assinatura('#1A1A1A')}</div>
         <div class="meta"><p class="meta-date">${d.data}</p><p class="meta-cod">ID: ${d.codigo}</p></div>
